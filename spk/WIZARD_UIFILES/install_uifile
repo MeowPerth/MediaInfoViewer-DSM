@@ -1,0 +1,10 @@
+[
+  {
+    "step_title": "MediaInfo Viewer",
+    "items": [
+      {
+        "desc": "After installation, open <b>File Station</b>, right-click an audio or video file and choose <b>Open &rarr; MediaInfo</b>.<br><br>This package uses the <b>MediaInfo</b> command line tool from SynoCommunity. Please install the <b>MediaInfo</b> package first if it is not installed yet."
+      }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+#!/bin/sh
+echo "MediaInfo Viewer: pre-install check"
+[ -r /etc/VERSION ] && grep -E '^(productversion|buildnumber)=' /etc/VERSION
+if [ -x /usr/bin/python3 ]; then
+    echo "python3: $(/usr/bin/python3 --version 2>&1)"
+else
+    echo "ERROR: /usr/bin/python3 is required."
+    exit 1
+fi
+
+MI=""
+for candidate in /var/packages/mediainfo/target/bin/mediainfo \
+                 /usr/local/bin/mediainfo /usr/bin/mediainfo; do
+    if [ -x "$candidate" ]; then
+        MI="$candidate"
+        break
+    fi
+done
+if [ -z "$MI" ]; then
+    echo "ERROR: MediaInfo CLI is required. Please install the MediaInfo package from Package Center first."
+    exit 1
+fi
+echo "mediainfo: $MI"
+exit 0

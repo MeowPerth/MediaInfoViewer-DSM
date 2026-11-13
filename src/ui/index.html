@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MediaInfoViewer</title>
+<link rel="icon" type="image/png" href="images/icon_32.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+    <header class="toolbar" id="toolbar">
+        <div class="top-actions" id="topActions"></div>
+        <div class="toolbar-extra" id="toolbarExtra">
+            <label class="search-wrap" title="搜索字段、值或原始键名">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                <input id="fieldSearch" type="search" placeholder="搜索字段或值…" autocomplete="off" spellcheck="false">
+                <span id="searchCount" class="search-count"></span>
+            </label>
+            <button class="btn small" id="keyToggle" type="button" title="在字段名后显示 MediaInfo 原始键名">键名</button>
+            <div class="export-wrap">
+                <button class="btn small" id="exportBtn" type="button" title="导出 MediaInfo 报告">导出 ▾</button>
+                <div class="export-menu" id="exportMenu" hidden>
+                    <button type="button" data-format="json">JSON</button>
+                    <button type="button" data-format="text">文本</button>
+                    <button type="button" data-format="xml">XML</button>
+                    <button type="button" data-format="html">HTML</button>
+                    <button type="button" data-format="csv">CSV</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="filetabs" id="filetabs" hidden></div>
+
+    <div class="body">
+        <aside class="sidebar" id="sidebar" hidden></aside>
+        <main class="content" id="content">
+            <div class="welcome" id="welcome">
+                <div class="welcome-logo"><img src="images/logo.png" alt="MediaInfo"></div>
+                <h1>MediaInfo 媒体信息查看器</h1>
+                <p class="welcome-lead">在 File Station 中右键点击任意音频或视频文件，选择
+                    <b>打开 → MediaInfo</b>，即可在这里查看它的封装格式、视频编码、音频编码、字幕与章节等详细信息。</p>
+                <div class="steps">
+                    <div class="step"><span class="step-no">1</span><div><b>打开 File Station</b><div>找到要检查的媒体文件</div></div></div>
+                    <div class="step"><span class="step-no">2</span><div><b>右键 → 打开 → MediaInfo</b><div>也可以一次选择多个文件批量查看</div></div></div>
+                    <div class="step"><span class="step-no">3</span><div><b>查看技术信息</b><div>支持切换文本视图与原始 JSON</div></div></div>
+                </div>
+                <p class="welcome-note">本套件依赖 SynoCommunity 的 <b>MediaInfo</b> 命令行套件。若尚未安装，请先在套件中心安装。</p>
+                <div class="welcome-links">
+                    <a class="link-btn" href="?demo=1">预览界面（演示数据）</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="toast" id="toast" hidden></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+[
+  {
+    "step_title": "MediaInfo 檢視器安裝提示",
+    "items": [
+      {
+        "desc": "安裝完成後，開啟 <b>File Station</b>，右鍵點擊音訊或視訊檔案，選擇 <b>開啟 &rarr; MediaInfo</b> 即可檢視媒體技術資訊。<br><br>本套件呼叫 SynoCommunity 的 <b>MediaInfo</b> 命令列套件。若尚未安裝，請先在套件中心安裝 <b>MediaInfo</b>。"
+      }
+    ]
+  }
+]

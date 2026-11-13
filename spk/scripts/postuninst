@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "MediaInfoViewer: uninstalled"
+ENABLE="${SYNOPKG_PKGDEST}/bin/mediainfo-fs-enable"
+if [ -x "$ENABLE" ]; then
+    "$ENABLE" --remove-autostart || true
+fi
+exit 0

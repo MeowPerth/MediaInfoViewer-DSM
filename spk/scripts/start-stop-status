@@ -1,0 +1,7 @@
+#!/bin/sh
+# No background service: the viewer is a CGI-backed web UI.
+case "$1" in
+    status) echo "mediainfo-fs is a UI-only package"; exit 0 ;;
+    start|stop|restart|prestart|prestop) exit 0 ;;
+esac
+exit 0

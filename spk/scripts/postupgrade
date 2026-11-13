@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "MediaInfo Viewer: upgraded"
+exit 0

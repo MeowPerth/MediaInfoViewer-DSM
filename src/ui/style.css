@@ -1,0 +1,26 @@
+/* File Station "Open with" menu icon for MediaInfo.
+   Keep the original 16px MediaInfo glyph (not stretched) but occupy the
+   same 24px icon slot as "Video Player" so the label starts at the same x
+   position and the glyph is centered in the slot. */
+.mediainfo-menu-icon {
+    background-image: url("images/menu_icon_16.png") !important;
+    background-position: center center !important;
+    background-size: 16px 16px !important;
+    background-repeat: no-repeat !important;
+    width: 24px !important;
+    height: 24px !important;
+}
+
+/* Move cursor on the viewer's title bar; tool buttons stay clickable. */
+.mediainfo-window .x-window-header { cursor: move !important; }
+.mediainfo-window .x-window-header .x-tool { cursor: pointer !important; }
+
+/* The title bar text/child elements must also show the move cursor, not the
+   pointer/hand inherited from DSM's window styles. */
+.mediainfo-window .x-window-header * { cursor: move !important; }
+.mediainfo-window .x-window-header .x-tool,
+.mediainfo-window .x-window-header .x-tool * { cursor: pointer !important; }
+
+/* While dragging, everything shows the four-way move cursor. */
+body.mediainfo-window-dragging,
+body.mediainfo-window-dragging * { cursor: move !important; }

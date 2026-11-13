@@ -1,0 +1,10 @@
+[
+  {
+    "step_title": "MediaInfo 查看器安装提示",
+    "items": [
+      {
+        "desc": "<b>安装前请确认已安装 SynoCommunity 的 MediaInfo 套件。</b>本套件依赖该套件提供的 <b>mediainfo</b> 命令行工具；如果尚未安装，请先在套件中心安装 MediaInfo，再安装本套件。<br><br>安装完成后，打开 <b>File Station</b>，右键点击音频或视频文件，选择 <b>打开 &rarr; MediaInfo</b> 即可查看媒体技术信息。"
+      }
+    ]
+  }
+]

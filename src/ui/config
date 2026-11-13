@@ -1,0 +1,38 @@
+{
+  "dsm-wrapper.js": {
+    "MeowPerth.MediaInfoFS.AppInstance": {
+      "type": "app",
+      "title": "MediaInfoViewer",
+      "version": "1.0.0",
+      "icon": "images/icon_{0}.png",
+      "allowMultiInstance": true,
+      "allUsers": true,
+      "allowStandalone": false,
+      "appWindow": "MeowPerth.MediaInfoFS.AppWindow",
+      "depend": [
+        "MeowPerth.MediaInfoFS.AppWindow",
+        "MeowPerth.MediaInfoFS.FBExt"
+      ],
+      "fb_extern": [
+        {
+          "multiple": true,
+          "dir": false,
+          "text": "MediaInfo",
+          "inMenu": "gc_view",
+          "checkFn": "MeowPerth.MediaInfoFS.FBExt.checkFn",
+          "launchFn": "MeowPerth.MediaInfoFS.FBExt.launchFn",
+          "iconCls": "mediainfo-menu-icon"
+        }
+      ],
+      "hidden": true
+    },
+    "MeowPerth.MediaInfoFS.AppWindow": {
+      "type": "lib",
+      "title": "MediaInfoViewer",
+      "icon": "images/icon_{0}.png"
+    },
+    "MeowPerth.MediaInfoFS.FBExt": [],
+    "MeowPerth.MediaInfoFS.FBExt.checkFn": [],
+    "MeowPerth.MediaInfoFS.FBExt.launchFn": []
+  }
+}

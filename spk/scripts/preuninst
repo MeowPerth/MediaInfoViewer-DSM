@@ -1,0 +1,7 @@
+#!/bin/sh
+# Remove the one-shot autostart timer while the helper still exists.
+ENABLE="${SYNOPKG_PKGDEST}/bin/mediainfo-fs-enable"
+if [ -x "$ENABLE" ]; then
+    "$ENABLE" --remove-autostart || true
+fi
+exit 0
