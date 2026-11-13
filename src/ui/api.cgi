@@ -29,7 +29,6 @@ import uuid
 AUTH_CGI = "/usr/syno/synoman/webman/modules/authenticate.cgi"
 MEDIAINFO_CANDIDATES = (
     "/var/packages/mediainfo/target/bin/mediainfo",
-    "/var/packages/mediainfo-fs/target/bin/mediainfo",
     "/usr/local/bin/mediainfo",
     "/usr/bin/mediainfo",
 )

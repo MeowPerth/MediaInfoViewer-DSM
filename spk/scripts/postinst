@@ -4,12 +4,12 @@ echo "MediaInfoViewer: post-install check"
 # UI-only packages are considered enabled by DSM when
 # /var/packages/<package>/enabled exists.  The post-install script runs as the
 # package user, so use the tiny setuid helper from conf/privilege.
-ENABLE="${SYNOPKG_PKGDEST}/bin/mediainfo-fs-enable"
+ENABLE="${SYNOPKG_PKGDEST}/bin/mediainfo-viewer-enable"
 if [ -x "$ENABLE" ]; then
-    if "$ENABLE" /var/packages/mediainfo-fs/enabled --install-autostart; then
+    if "$ENABLE" /var/packages/mediainfo-viewer/enabled --install-autostart; then
         echo "package marked as enabled"
     else
-        echo "WARN: could not create /var/packages/mediainfo-fs/enabled"
+        echo "WARN: could not create /var/packages/mediainfo-viewer/enabled"
     fi
 else
     echo "WARN: enable helper missing"

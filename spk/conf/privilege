@@ -1,9 +1,9 @@
 {
   "defaults": { "run-as": "package" },
-  "username": "sc-mediainfo-fs",
-  "groupname": "mediainfo-fs",
+  "username": "sc-mediainfo-viewer",
+  "groupname": "mediainfo-viewer",
   "tool": [
     { "relpath": "ui/api.cgi", "user": "root", "group": "package", "permission": "0755" },
-    { "relpath": "bin/mediainfo-fs-enable", "user": "root", "group": "package", "permission": "4755" }
+    { "relpath": "bin/mediainfo-viewer-enable", "user": "root", "group": "package", "permission": "4755" }
   ]
 }

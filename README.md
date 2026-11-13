@@ -60,28 +60,31 @@
 
 ## 安装
 
+> 如果设备上安装过旧包名的 `mediainfo-fs`，请先在套件中心卸载旧版本，再安装
+> 1.0.0。新包名为 `mediainfo-viewer`，`INFO` 已声明与旧包冲突，不能同时安装。
+
 1. 在套件中心确认已安装 **MediaInfo**（SynoCommunity）。
 2. 套件中心 → **手动安装** → 选择
-   `dist/mediainfo-fs_x86_64-dsm7_1.0.0.spk`。
+   `dist/mediainfo-viewer_x86_64-dsm7_1.0.0.spk`。
 3. 安装完成后等待几秒，让套件自动启动，然后 **刷新 File Station**
    （Ctrl+F5，或关闭窗口重新打开）。
 
 命令行安装（可选）：
 
 ```bash
-sudo synopkg install mediainfo-fs_x86_64-dsm7_1.0.0.spk
+sudo synopkg install mediainfo-viewer_x86_64-dsm7_1.0.0.spk
 ```
 
 > 本套件是纯 UI 套件，没有常驻服务。安装脚本会创建一个 enabled 标记，并通过一个
-> 一次性 systemd timer 调用 `synopkg start mediainfo-fs`，让 File Station
+> 一次性 systemd timer 调用 `synopkg start mediainfo-viewer`，让 File Station
 > 将其识别为已启动并加载右键菜单；重启后 timer 会再次启动套件。
 
 ### 菜单没有出现？
 
 1. 刷新 File Station（Ctrl+F5）；
-2. 确认 `/var/packages/mediainfo-fs/enabled` 存在；
-3. 执行一次 `sudo synopkg start mediainfo-fs` 后刷新；
-4. 查看日志：`/var/log/packages/mediainfo-fs.log`。
+2. 确认 `/var/packages/mediainfo-viewer/enabled` 存在；
+3. 执行一次 `sudo synopkg start mediainfo-viewer` 后刷新；
+4. 查看日志：`/var/log/packages/mediainfo-viewer.log`。
 
 ## 使用
 
@@ -129,8 +132,8 @@ spk/
   "iconCls": "mediainfo-menu-icon",
   "text": "MediaInfo",
   "inMenu": "gc_view",
-  "checkFn": "MeowPerth.MediaInfoFS.FBExt.checkFn",
-  "launchFn": "MeowPerth.MediaInfoFS.FBExt.launchFn"
+  "checkFn": "MeowPerth.MediaInfoViewer.FBExt.checkFn",
+  "launchFn": "MeowPerth.MediaInfoViewer.FBExt.launchFn"
 }]
 ```
 
@@ -154,11 +157,11 @@ spk/
 ### 自启动
 
 File Station 只加载「已启动」套件的 `fb_extern`。纯 UI 套件没有常驻进程，安装脚本
-（以 `sc-mediainfo-fs` 运行）无法调用 `synopkg`。`bin/mediainfo-fs-enable` 是仅接受
+（以 `sc-mediainfo-viewer` 运行）无法调用 `synopkg`。`bin/mediainfo-viewer-enable` 是仅接受
 固定参数的 setuid helper：
 
-- 创建 `/var/packages/mediainfo-fs/enabled`
-- 写入并启用一个一次性 systemd timer，2 秒后执行 `synopkg start mediainfo-fs`
+- 创建 `/var/packages/mediainfo-viewer/enabled`
+- 写入并启用一个一次性 systemd timer，2 秒后执行 `synopkg start mediainfo-viewer`
 - 卸载时由 `preuninst` 调用 helper 删除 timer
 
 ## 安全说明
@@ -167,14 +170,14 @@ File Station 只加载「已启动」套件的 `fb_extern`。纯 UI 套件没有
 - 不使用 shell 拼接路径；文件路径作为 argv 传递。
 - 路径限制在 `/volume*`，要求普通文件。
 - 临时符号链接位于 `/tmp`，随机文件名，使用后删除。
-- `mediainfo-fs-enable` 仅执行固定路径/固定命令，不是通用 root shell。
+- `mediainfo-viewer-enable` 仅执行固定路径/固定命令，不是通用 root shell。
 - 套件未签名；请只安装来自本仓库的 SPK。
 
 ## 构建
 
 ```bash
 bash build.sh
-# 产物：dist/mediainfo-fs_x86_64-dsm7_1.0.0.spk
+# 产物：dist/mediainfo-viewer_x86_64-dsm7_1.0.0.spk
 ```
 
 构建机需要 `bash`、`python3`、`node`、`gcc`（编译静态 setuid helper）。

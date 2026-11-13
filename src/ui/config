@@ -1,6 +1,6 @@
 {
   "dsm-wrapper.js": {
-    "MeowPerth.MediaInfoFS.AppInstance": {
+    "MeowPerth.MediaInfoViewer.AppInstance": {
       "type": "app",
       "title": "MediaInfoViewer",
       "version": "1.0.0",
@@ -8,10 +8,10 @@
       "allowMultiInstance": true,
       "allUsers": true,
       "allowStandalone": false,
-      "appWindow": "MeowPerth.MediaInfoFS.AppWindow",
+      "appWindow": "MeowPerth.MediaInfoViewer.AppWindow",
       "depend": [
-        "MeowPerth.MediaInfoFS.AppWindow",
-        "MeowPerth.MediaInfoFS.FBExt"
+        "MeowPerth.MediaInfoViewer.AppWindow",
+        "MeowPerth.MediaInfoViewer.FBExt"
       ],
       "fb_extern": [
         {
@@ -19,20 +19,20 @@
           "dir": false,
           "text": "MediaInfo",
           "inMenu": "gc_view",
-          "checkFn": "MeowPerth.MediaInfoFS.FBExt.checkFn",
-          "launchFn": "MeowPerth.MediaInfoFS.FBExt.launchFn",
+          "checkFn": "MeowPerth.MediaInfoViewer.FBExt.checkFn",
+          "launchFn": "MeowPerth.MediaInfoViewer.FBExt.launchFn",
           "iconCls": "mediainfo-menu-icon"
         }
       ],
       "hidden": true
     },
-    "MeowPerth.MediaInfoFS.AppWindow": {
+    "MeowPerth.MediaInfoViewer.AppWindow": {
       "type": "lib",
       "title": "MediaInfoViewer",
       "icon": "images/icon_{0}.png"
     },
-    "MeowPerth.MediaInfoFS.FBExt": [],
-    "MeowPerth.MediaInfoFS.FBExt.checkFn": [],
-    "MeowPerth.MediaInfoFS.FBExt.launchFn": []
+    "MeowPerth.MediaInfoViewer.FBExt": [],
+    "MeowPerth.MediaInfoViewer.FBExt.checkFn": [],
+    "MeowPerth.MediaInfoViewer.FBExt.launchFn": []
   }
 }

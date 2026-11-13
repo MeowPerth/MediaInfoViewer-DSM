@@ -1,20 +1,20 @@
 /* MediaInfo for File Station - DSM UI glue.
  *
  * Registers three things:
- *   - MeowPerth.MediaInfoFS.FBExt      : the File Station "Open >" menu entry
- *   - MeowPerth.MediaInfoFS.AppInstance: the DSM application instance
- *   - MeowPerth.MediaInfoFS.AppWindow  : a DSM window that hosts ui/index.html
+ *   - MeowPerth.MediaInfoViewer.FBExt      : the File Station "Open >" menu entry
+ *   - MeowPerth.MediaInfoViewer.AppInstance: the DSM application instance
+ *   - MeowPerth.MediaInfoViewer.AppWindow  : a DSM window that hosts ui/index.html
  *
  * The menu entry itself is declared in ui/config (fb_extern).  File Station
  * scans every registered application config, so the entry shows up in the
  * right-click "Open" submenu next to "Video Player".
  */
-Ext.ns('MeowPerth.MediaInfoFS');
+Ext.ns('MeowPerth.MediaInfoViewer');
 
 (function () {
     'use strict';
 
-    var PAGE_URL = '/webman/3rdparty/mediainfo-fs/index.html';
+    var PAGE_URL = '/webman/3rdparty/mediainfo-viewer/index.html';
     var viewerInstance = null;
 
     function currentViewerWindow() {
@@ -31,7 +31,7 @@ Ext.ns('MeowPerth.MediaInfoFS');
             win.addFiles({ paths: paths, names: names });
             return;
         }
-        var inst = new MeowPerth.MediaInfoFS.AppInstance({ allowMultiInstance: false });
+        var inst = new MeowPerth.MediaInfoViewer.AppInstance({ allowMultiInstance: false });
         viewerInstance = inst;
         inst.open({ fb_recs: { paths: paths, names: names } });
     }
@@ -86,7 +86,7 @@ Ext.ns('MeowPerth.MediaInfoFS');
         return record.get('real_path') || record.get('path') || '';
     }
 
-    Ext.define('MeowPerth.MediaInfoFS.FBExt', {
+    Ext.define('MeowPerth.MediaInfoViewer.FBExt', {
         statics: {
             checkFn: function (plugin, records) {
                 if (!records || !records.length) {
@@ -133,11 +133,11 @@ Ext.ns('MeowPerth.MediaInfoFS');
         }
     });
 
-    MeowPerth.MediaInfoFS.AppInstance = Ext.extend(SYNO.SDS.AppInstance, {
-        appWindowName: 'MeowPerth.MediaInfoFS.AppWindow'
+    MeowPerth.MediaInfoViewer.AppInstance = Ext.extend(SYNO.SDS.AppInstance, {
+        appWindowName: 'MeowPerth.MediaInfoViewer.AppWindow'
     });
 
-    MeowPerth.MediaInfoFS.AppWindow = Ext.extend(SYNO.SDS.LegacyAppWindow, {
+    MeowPerth.MediaInfoViewer.AppWindow = Ext.extend(SYNO.SDS.LegacyAppWindow, {
         overwriteAppWinConfig: function (config) {
             // In a standalone File Station page DSM forces app windows to be
             // non-draggable/non-resizable.  The viewer should stay a normal

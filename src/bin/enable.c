@@ -1,8 +1,8 @@
 /*
- * mediainfo-fs-enable: tiny setuid helper for the UI-only package.
+ * mediainfo-viewer-enable: tiny setuid helper for the UI-only package.
  *
- *   1. create /var/packages/mediainfo-fs/enabled (DSM's enabled marker);
- *   2. install a one-shot systemd timer that runs `synopkg start mediainfo-fs`
+ *   1. create /var/packages/mediainfo-viewer/enabled (DSM's enabled marker);
+ *   2. install a one-shot systemd timer that runs `synopkg start mediainfo-viewer`
  *      after install/boot, so File Station sees the package as "start" and
  *      loads the right-click menu (a UI-only package has no long-running
  *      daemon whose status would otherwise flip to start);
@@ -17,10 +17,10 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define ENABLED_PATH "/var/packages/mediainfo-fs/enabled"
+#define ENABLED_PATH "/var/packages/mediainfo-viewer/enabled"
 #define UNIT_DIR "/etc/systemd/system"
-#define SERVICE_PATH UNIT_DIR "/mediainfo-fs-autostart.service"
-#define TIMER_PATH UNIT_DIR "/mediainfo-fs-autostart.timer"
+#define SERVICE_PATH UNIT_DIR "/mediainfo-viewer-autostart.service"
+#define TIMER_PATH UNIT_DIR "/mediainfo-viewer-autostart.timer"
 
 static int write_file(const char *path, const char *content)
 {
@@ -43,25 +43,25 @@ static void install_autostart(void)
         "Description=Start MediaInfoViewer package\n"
         "[Service]\n"
         "Type=oneshot\n"
-        "ExecStart=/usr/syno/bin/synopkg start mediainfo-fs\n");
+        "ExecStart=/usr/syno/bin/synopkg start mediainfo-viewer\n");
     write_file(TIMER_PATH,
         "[Unit]\n"
         "Description=Start MediaInfoViewer after boot or install\n"
         "[Timer]\n"
         "OnActiveSec=2s\n"
-        "Unit=mediainfo-fs-autostart.service\n"
+        "Unit=mediainfo-viewer-autostart.service\n"
         "[Install]\n"
         "WantedBy=timers.target\n");
     system("/usr/bin/systemctl daemon-reload >/dev/null 2>&1");
-    system("/usr/bin/systemctl enable mediainfo-fs-autostart.timer >/dev/null 2>&1");
-    system("/usr/bin/systemctl stop mediainfo-fs-autostart.timer >/dev/null 2>&1");
-    system("/usr/bin/systemctl start mediainfo-fs-autostart.timer >/dev/null 2>&1");
+    system("/usr/bin/systemctl enable mediainfo-viewer-autostart.timer >/dev/null 2>&1");
+    system("/usr/bin/systemctl stop mediainfo-viewer-autostart.timer >/dev/null 2>&1");
+    system("/usr/bin/systemctl start mediainfo-viewer-autostart.timer >/dev/null 2>&1");
 }
 
 static void remove_autostart(void)
 {
-    system("/usr/bin/systemctl disable mediainfo-fs-autostart.timer >/dev/null 2>&1");
-    system("/usr/bin/systemctl stop mediainfo-fs-autostart.timer >/dev/null 2>&1");
+    system("/usr/bin/systemctl disable mediainfo-viewer-autostart.timer >/dev/null 2>&1");
+    system("/usr/bin/systemctl stop mediainfo-viewer-autostart.timer >/dev/null 2>&1");
     unlink(TIMER_PATH);
     unlink(SERVICE_PATH);
     system("/usr/bin/systemctl daemon-reload >/dev/null 2>&1");

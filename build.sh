@@ -4,7 +4,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
-PKG_NAME="mediainfo-fs"
+PKG_NAME="mediainfo-viewer"
 VERSION="1.0.0"
 ARCH="epyc7002 x86_64"
 SPK_FILE="${ROOT}/dist/${PKG_NAME}_x86_64-dsm7_${VERSION}.spk"
@@ -27,8 +27,8 @@ for f in "$ROOT"/spk/scripts/*; do
 done
 
 echo "==> compiling enable helper"
-gcc -O2 -static -s -o "$STAGE/bin/mediainfo-fs-enable" "$ROOT/src/bin/enable.c"
-chmod 0755 "$STAGE/bin/mediainfo-fs-enable"
+gcc -O2 -static -s -o "$STAGE/bin/mediainfo-viewer-enable" "$ROOT/src/bin/enable.c"
+chmod 0755 "$STAGE/bin/mediainfo-viewer-enable"
 
 echo "==> assembling package.tgz"
 install -m 0755 "$ROOT/src/ui/api.cgi"           "$STAGE/ui/api.cgi"
@@ -74,7 +74,7 @@ displayname_enu="MediaInfoViewer"
 displayname_chs="MediaInfo查看器"
 displayname_cht="MediaInfo檢視器"
 dsmuidir="ui"
-dsmappname="MeowPerth.MediaInfoFS.AppInstance"
+dsmappname="MeowPerth.MediaInfoViewer.AppInstance"
 maintainer="MeowPerth"
 maintainer_url="https://github.com/MeowPerth/MediaInfoViewer-DSM"
 distributor="MeowPerth"
@@ -82,6 +82,7 @@ distributor_url="https://github.com/MeowPerth/MediaInfoViewer-DSM"
 helpurl="https://github.com/MeowPerth/MediaInfoViewer-DSM"
 support_url="https://github.com/MeowPerth/MediaInfoViewer-DSM/issues"
 install_dep_packages="mediainfo"
+install_conflict_packages="mediainfo-fs"
 startable="yes"
 reloadui="yes"
 changelog="1.0.0: first release - File Station 打开菜单 / 单窗口多标签 / 标准与完整模式 / 字段搜索 / 轨道总览 / HDR 与音频徽章 / 文本与 JSON / XML HTML CSV 导出"

@@ -39,11 +39,11 @@
 ## 安装
 
 1. 先在套件中心安装 **MediaInfo**（SynoCommunity）。
-2. 下载下方 `mediainfo-fs_x86_64-dsm7_1.0.0.spk`，在套件中心手动安装。
+2. 下载下方 `mediainfo-viewer_x86_64-dsm7_1.0.0.spk`，在套件中心手动安装。
 3. 等待几秒，然后刷新 File Station（Ctrl+F5）。
 
 ```bash
-sudo synopkg install mediainfo-fs_x86_64-dsm7_1.0.0.spk
+sudo synopkg install mediainfo-viewer_x86_64-dsm7_1.0.0.spk
 ```
 
 ## 链接
